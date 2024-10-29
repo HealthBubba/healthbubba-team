@@ -44,4 +44,12 @@ class User extends Authenticatable {
     function getNameAttribute(){
         return implode(' ', [$this->firstname, $this->lastname]);
     }
+
+    function getIsAdminAttribute(){
+        return in_array($this->role, [Role::ADMIN, Role::SUPERADMIN]);
+    }
+
+    function getIsMarketerAttribute(){
+        return $this->role == Role::MARKETER;
+    }
 }

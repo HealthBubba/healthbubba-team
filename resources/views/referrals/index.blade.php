@@ -1,16 +1,7 @@
-<x-dashboard-layout title="{{$user->name}}" heading="{{$user->name}} - {{$user->code}}" >
+<x-dashboard-layout title="Referrals" heading="Referrals" >
     <div class="card">
         <div class="card-body">
             <div class="mb-10 d-flex justify-content-between">
-                <div class="d-flex align-items-center gap-2">
-                    <div>
-                        <h1 class="mb-0">{{$user->code}}</h1>
-                    </div>
-                    <div>
-                        <x-copy value="{{$user->code}}" />
-                    </div>
-                </div>
-
                 <div>
                     {{-- <form class="d-flex gap-2" action="{{request()->url()}}">
                         <x-input.date-range name="date"  />

@@ -17,12 +17,23 @@
                     </a>
                 </div>
                 
-                <div class="menu-item {{request()->routeIs('team*') ? 'here' : ''}}">
-                    <a href="{{route('team')}}" class="menu-link ">
+                @if ($authenticated->is_admin)
+                    <div class="menu-item {{request()->routeIs('team*') ? 'here' : ''}}">
+                        <a href="{{route('team')}}" class="menu-link ">
+                            <span class="menu-icon">
+                                <i class="ki-outline ki-profile-user fs-2"></i>
+                            </span>
+                            <span class="menu-title">Team Members</span>
+                        </a>
+                    </div>
+                @endif
+                
+                <div class="menu-item {{request()->routeIs('referrals*') ? 'here' : ''}}">
+                    <a href="{{route('referrals')}}" class="menu-link ">
                         <span class="menu-icon">
                             <i class="ki-outline ki-profile-user fs-2"></i>
                         </span>
-                        <span class="menu-title">Team Members</span>
+                        <span class="menu-title">Referrals</span>
                     </a>
                 </div>
 
@@ -32,14 +43,16 @@
                     </div>
                 </div>
 
-                <div class="menu-item {{request()->routeIs('profile') ? 'here' : ''}}">
-                    <a href="{{route('profile')}}" class="menu-link ">
-                        <span class="menu-icon">
-                            <i class="ki-outline ki-user-square fs-2"></i>
-                        </span>
-                        <span class="menu-title">Admins</span>
-                    </a>
-                </div>
+                @if ($authenticated->is_admin)
+                    <div class="menu-item {{request()->routeIs('users') ? 'here' : ''}}">
+                        <a href="{{route('users')}}" class="menu-link ">
+                            <span class="menu-icon">
+                                <i class="ki-outline ki-user-square fs-2"></i>
+                            </span>
+                            <span class="menu-title">Admins</span>
+                        </a>
+                    </div>
+                @endif
 
                 <div class="menu-item {{request()->routeIs('profile') ? 'here' : ''}}">
                     <a href="{{route('profile')}}" class="menu-link ">

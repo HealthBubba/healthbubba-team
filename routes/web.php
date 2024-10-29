@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +15,12 @@ Route::middleware(['auth'])->group(function(){
         });
     });
 
+    Route::prefix('referrals')->group(function(){
+        Route::get('', [ReferralController::class, 'index'])->name('referrals');
+    });
+
     Route::prefix('users')->group(function(){
+        Route::get('', [UserController::class, 'index'])->name('users');
         Route::prefix('{user}')->group(function(){
             Route::get('delete', [UserController::class, 'destroy'])->name('users.destroy');
         });
