@@ -16,20 +16,13 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </div>
+                
                 <div class="menu-item {{request()->routeIs('team*') ? 'here' : ''}}">
                     <a href="{{route('team')}}" class="menu-link ">
                         <span class="menu-icon">
                             <i class="ki-outline ki-profile-user fs-2"></i>
                         </span>
                         <span class="menu-title">Team Members</span>
-                    </a>
-                </div>
-                <div class="menu-item">
-                    <a href="#" class="menu-link ">
-                        <span class="menu-icon">
-                            <i class="ki-outline ki-people fs-2"></i>
-                        </span>
-                        <span class="menu-title">Sign ups</span>
                     </a>
                 </div>
 

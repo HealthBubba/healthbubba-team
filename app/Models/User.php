@@ -37,6 +37,10 @@ class User extends Authenticatable {
         return $query->whereRole(Role::MARKETER);
     }
 
+    function referrals(){
+        return $this->setConnection('main')->hasMany(Referral::class, 'referral_code', 'code');
+    }
+
     function getNameAttribute(){
         return implode(' ', [$this->firstname, $this->lastname]);
     }

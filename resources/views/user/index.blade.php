@@ -30,10 +30,10 @@
                         @forelse ($users as $user)
                             <tr>
                                 <td>
-                                    <a href="#">{{$user->name}}</a>
+                                    <a href="{{route('team.show', ['user' => $user->id])}}">{{$user->name}}</a>
                                 </td>
-                                <td>{{$user->code}}</td>
-                                <td>0</td>
+                                <td>{{$user->code}} <x-copy :value="$user->code" /> </td>
+                                <td>{{$user->referrals_count}}</td>
                                 <td>{{$user->created_at->toDayDateTimeString()}}</td>
                                 <td>
                                     <a href="{{route('team.show', ['user' => $user->id])}}" class="btn btn-sm btn-icon btn-light w-30px h-30px">

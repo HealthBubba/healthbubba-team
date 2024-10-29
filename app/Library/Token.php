@@ -49,7 +49,7 @@ class Token {
         $str = Str::random($len);
     
         if ($model && $column && app($model)->where($column, '==', $str)->exists()) {
-            return static::text($len, $model, $column);
+            return static::alphaNum($len, $model, $column);
         }
 
         return $str;
