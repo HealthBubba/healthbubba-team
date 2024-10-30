@@ -1,35 +1,24 @@
 <div id="kt_header" class="header">
-    <!--begin::Container-->
     <div class="container-fluid d-flex align-items-center flex-wrap justify-content-between" id="kt_header_container">
-        <!--begin::Page title-->
         <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-2 pb-5 pb-lg-0 pt-7 pt-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
-            <!--begin::Heading-->
-            <h1 class="d-flex flex-column text-gray-900 fw-bold my-0 fs-1">
-                {{$heading}} 
-                {{-- <small class="text-muted fs-6 fw-semibold ms-1 pt-1">You’ve got 24 New Sales</small> --}}
-            </h1>
-            <!--end::Heading-->
+            <h1 class="d-flex flex-column text-gray-900 fw-bold my-0 fs-1">{{$heading}}</h1>
+            {{-- <small class="text-muted fs-6 fw-semibold ms-1 pt-1">You’ve got 24 New Sales</small> --}}
         </div>
 
         <div class="d-flex d-lg-none align-items-center ms-n4 me-2">
-            <!--begin::Aside mobile toggle-->
             <div class="btn btn-icon btn-active-icon-primary" id="kt_aside_toggle">
                 <i class="ki-duotone ki-abstract-14 fs-1 mt-1">
                     <span class="path1"></span>
                     <span class="path2"></span>
                 </i>
             </div>
-            <!--end::Aside mobile toggle-->
-            <!--begin::Logo-->
+
             <a href="index.html" class="d-flex align-items-center">
                 <img alt="Logo" src="/assets/media/logos/logo.jpg" class="h-30px" />
             </a>
-            <!--end::Logo-->
         </div>
-        <!--end::Wrapper-->
-        <!--begin::Topbar-->
+
         <div class="d-flex align-items-center flex-shrink-0">
-            <!--begin::Search-->
             <div id="kt_header_search" class="header-search d-flex align-items-center w-lg-250px" data-kt-search-keypress="true" data-kt-search-min-length="2" data-kt-search-enter="enter" data-kt-search-layout="menu" data-kt-search-responsive="lg" data-kt-menu-trigger="auto" data-kt-menu-permanent="true" data-kt-menu-placement="bottom-end">
                 <!--begin::Tablet and mobile search toggle-->
                 <div data-kt-search-element="toggle" class="search-toggle-mobile d-flex d-lg-none align-items-center">
@@ -699,7 +688,6 @@
                 <!--end::Menu-->
             </div>
             
-            <!--begin::Theme mode-->
             <div class="d-flex align-items-center ms-3 ms-lg-4">
                 <!--begin::Menu toggle-->
                 <a href="#" class="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline w-40px h-40px" data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
@@ -775,11 +763,6 @@
                 </div>
                 <!--end::Menu-->
             </div>
-            <!--end::Theme mode-->
-            <!--begin::Sidebar Toggler-->
-            <!--end::Sidebar Toggler-->
         </div>
-        <!--end::Topbar-->
     </div>
-    <!--end::Container-->
 </div>
