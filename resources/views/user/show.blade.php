@@ -2,21 +2,32 @@
     <div class="card">
         <div class="card-body">
             <div class="mb-10 d-flex justify-content-between">
-                <div class="d-flex align-items-center gap-2">
+                <div>
                     <div>
-                        <h1 class="mb-0">{{$user->code}}</h1>
+                        <h3 class="mb-0">{{$user->name}}</h3>
+                        <p class="text-muted">{{$user->email}}</p>
                     </div>
-                    <div>
-                        <x-copy value="{{$user->code}}" />
+                    <div class="d-flex align-items-center gap-2">
+                        <div>
+                            <h4 class="mb-0">{{$user->code}}</h4>
+                        </div>
+                        <div>
+                            <x-copy value="{{$user->code}}" />
+                        </div>
                     </div>
                 </div>
 
                 <div>
-                    {{-- <form class="d-flex gap-2" action="{{request()->url()}}">
-                        <x-input.date-range name="date"  />
-                        <x-button class="btn-light-success">Filter</x-button>
-                    </form> --}}
+                    <x-button data-bs-target="#user-edit-{{$user->id}}" data-bs-toggle="modal" class="btn-sm btn-light-primary">
+                        Edit Profile
+                    </x-button>
+
+                    <x-swal href="{{route('users.destroy', ['user' => $user->id])}}" class="btn btn-sm btn-light-danger">
+                        Delete Account
+                    </x-swal>
                 </div>
+
+                <livewire:user.edit modal="user-edit-{{$user->id}}" :user="$user" />
             </div>
 
             <div class="mb-10">
@@ -42,6 +53,14 @@
                             <div class="card-body  p-4">
                                 <h1 >{{$patients}}</h1>
                                 <p class="text-muted mb-0">Patients</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card card-bordered">
+                            <div class="card-body  p-4">
+                                <h1 ><x-currency/>{{number_format($user->commission)}}</h1>
+                                <p class="text-muted mb-0">Earned Commission</p>
                             </div>
                         </div>
                     </div>

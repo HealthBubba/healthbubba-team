@@ -62,6 +62,17 @@
                         <span class="menu-title">Profile</span>
                     </a>
                 </div>
+                
+                @if ($authenticated->is_admin)
+                    <div class="menu-item {{request()->routeIs('settings') ? 'here' : ''}}">
+                        <a href="{{route('settings')}}" class="menu-link ">
+                            <span class="menu-icon">
+                                <i class="ki-outline ki-setting fs-2"></i>
+                            </span>
+                            <span class="menu-title">Settings</span>
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

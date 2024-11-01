@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Concerns\HasStatus;
 use App\Enums\Role;
+use App\Enums\Settings;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -43,6 +44,10 @@ class User extends Authenticatable {
 
     function getNameAttribute(){
         return implode(' ', [$this->firstname, $this->lastname]);
+    }
+
+    function getCommissionAttribute(){
+        return Settings::COMMISSION_FEE->value() * $this->referrals->count();
     }
 
     function getIsAdminAttribute(){
