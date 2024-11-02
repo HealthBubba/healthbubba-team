@@ -73,28 +73,16 @@
                         </a>
                     </div>
                 @endif
-            </div>
-        </div>
-    </div>
-
-    <div class="aside-footer flex-column-auto px-6 px-lg-9" id="kt_aside_footer">
-        <div class="d-flex flex-stack ms-7">
-            <a href="{{route('logout')}}" class="btn btn-sm btn-icon btn-active-color-primary btn-icon-gray-600 btn-text-gray-600">
-                <i class="ki-duotone ki-entrance-left fs-1 me-2">
-                    <span class="path1"></span>
-                    <span class="path2"></span>
-                </i>
-                <span class="d-flex flex-shrink-0 fw-bold">Log Out</span>
-            </a>
-
-            {{-- <div class="ms-1">
-                <div class="btn btn-sm btn-icon btn-icon-gray-600 btn-active-color-primary position-relative me-n1" data-kt-menu-trigger="click" data-kt-menu-overflow="true" data-kt-menu-placement="top-start">
-                    <i class="ki-duotone ki-setting-2 fs-1">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
+                
+                <div class="menu-item ">
+                    <a href="{{route('logout')}}" class="menu-link ">
+                        <span class="menu-icon">
+                            <i class="ki-outline ki-entrance-left fs-2"></i>
+                        </span>
+                        <span class="menu-title">Log Out</span>
+                    </a>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>

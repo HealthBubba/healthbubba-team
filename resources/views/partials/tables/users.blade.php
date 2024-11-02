@@ -1,4 +1,4 @@
-<div>
+<div class="table-responsive">
     <x-table id="{{$id ?? '#datatable'}}" >
         <thead class="border-gray-200 fs-5 fw-semibold bg-lighten">
             <tr>

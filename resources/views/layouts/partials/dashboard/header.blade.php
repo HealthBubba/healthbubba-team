@@ -13,8 +13,8 @@
                 </i>
             </div>
 
-            <a href="index.html" class="d-flex align-items-center">
-                <img alt="Logo" src="/assets/media/logos/logo.jpg" class="h-30px" />
+            <a href="{{route('dashboard')}}" class="d-flex align-items-center">
+                <img alt="Logo" src="{{asset('logo.svg')}}" class="h-30px" />
             </a>
         </div>
 
