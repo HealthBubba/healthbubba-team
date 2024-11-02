@@ -46,11 +46,13 @@
                 <x-table >
                     <thead class="border-gray-200 fs-5 fw-semibold bg-lighten">
                         <tr>
-                            <th>Name</th>
-                            <th>Email Address</th>
-                            <th>Referred By</th>
+                            <th class="min-w-250px">Name</th>
+                            <th class="min-w-200px">Email Address</th>
+                            @if ($authenticated->is_admin)                            
+                                <th>Referred By</th>
+                            @endif
                             <th>Type</th>
-                            <th>Joined At</th>
+                            <th class="min-w-150px">Joined At</th>
                         </tr>
                     </thead>
     
@@ -61,14 +63,16 @@
                                     <a href="#">{{$referral->first_name}} {{$referral->last_name}} </a>
                                 </td>
                                 <td>{{$referral->email}}</td>
-                                <td>
-                                    @php
-                                        $user = App\Models\User::whereCode($referral->referral_code)->first();
-                                    @endphp
-                                    <a href="{{route('team.show', ['user' => $user->id])}}">
-                                        {{$user->name}}
-                                    </a>
-                                </td>
+                                @if ($authenticated->is_admin)
+                                    <td>
+                                        @php
+                                            $user = App\Models\User::whereCode($referral->referral_code)->first();
+                                        @endphp
+                                        <a href="{{route('team.show', ['user' => $user->id])}}">
+                                            {{$user->name}}
+                                        </a>
+                                    </td>
+                                @endif
                                 <td>{{$referral->type}}</td>
                                 <td>{{$referral->created_at->toDayDateTimeString()}}</td>
                             </tr>
