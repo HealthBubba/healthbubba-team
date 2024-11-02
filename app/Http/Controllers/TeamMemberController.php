@@ -16,9 +16,9 @@ class TeamMemberController extends Controller{
 
     function show(Request $request, User $user) {
         $query = $user->referrals();
-        $doctors = $user->referrals()->whereType('doctor')->count(); 
-        $patients = $user->referrals()->whereType('patient')->count(); 
-        $referrals = $query->whereNotNull('referral_code')->latest('created_at')->paginate();
+        $doctors = $user->referrals()->isFromTeam()->whereType('doctor')->count(); 
+        $patients = $user->referrals()->isFromTeam()->whereType('patient')->count(); 
+        $referrals = $query->whereNotNull('referral_code')->isFromTeam()->latest('created_at')->paginate();
         return view('user.show', compact('user', 'referrals', 'patients', 'doctors'));
     }
 
