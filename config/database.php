@@ -65,7 +65,7 @@ return [
         'main' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_MAIN_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_MAIN_DATABASE', 'laravel'),
             'username' => env('DB_MAIN_USERNAME', 'root'),
