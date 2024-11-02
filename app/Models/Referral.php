@@ -11,7 +11,7 @@ class Referral extends Model
     protected $connection = 'main';
 
     function scopeIsFromTeam(Builder $query){
-        $query->whereBelongsTo($this->user);
+        $query->whereIn('referral_code', User::select('code'));
     }
 
     function user(){
