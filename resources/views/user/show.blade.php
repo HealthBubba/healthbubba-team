@@ -1,7 +1,7 @@
 <x-dashboard-layout title="{{$user->name}}" heading="{{$user->name}} - {{$user->code}}" >
     <div class="card">
         <div class="card-body">
-            <div class="mb-10 d-flex justify-content-between">
+            <div class="mb-10 d-md-flex justify-content-between">
                 <div>
                     <div>
                         <h3 class="mb-0">{{$user->name}}</h3>
