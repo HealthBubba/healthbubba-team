@@ -32,7 +32,7 @@ class Edit extends Component {
         return [
             'firstname' => 'required|string',
             'lastname' => 'required|string',
-            'email' => 'required|string|email',
+            'email' => ['required', 'string', 'email', Rule::unique('users', 'email')->ignore($this->user?->id, 'id')],
             'phone' => 'nullable|string',
             'code' => ['required', Rule::unique('users', 'code')->ignore($this->user?->id, 'id')],
             'password' => 'nullable'
