@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Password;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use App\Concerns\Livewire\WithToast;
 
-new #[Layout('layouts.guest')] class extends Component
-{
+new #[Layout('layouts.guest')] class extends Component {
+    use WithToast;
+
     public string $email = '';
 
     /**
@@ -32,30 +34,24 @@ new #[Layout('layouts.guest')] class extends Component
 
         $this->reset('email');
 
-        session()->flash('status', __($status));
+        $this->toast($status)->success();
     }
 }; ?>
 
-<div>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+<form class="form w-100" wire:submit="sendPasswordResetLink">
+    <div class="text-center mb-11">
+        <div class="text-gray-500 fw-semibold fs-6">Forgot your Password?</div>
+        <p class="text-muted">No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
     </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form wire:submit="sendPasswordResetLink">
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</div>
+    <div class="fv-row mb-8">
+        <x-input.label>Email Address</x-input.label>
+        <x-input type="email" wire:model="email" placeholder="Email Address" />
+        <x-input.error key="email"  />
+        <x-input.error key="email"  />
+    </div>
+    
+    <div class="d-grid mb-10">
+        <x-button class="btn-primary" wire:loading wire:target="sendPasswordResetLink" >Send Password Reset Link</x-button>
+    </div>
+</form>

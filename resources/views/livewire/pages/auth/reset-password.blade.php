@@ -9,9 +9,11 @@ use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Volt\Component;
+use App\Concerns\Livewire\WithToast;
 
 new #[Layout('layouts.guest')] class extends Component
 {
+    use WithToast;
     #[Locked]
     public string $token = '';
     public string $email = '';
@@ -64,42 +66,36 @@ new #[Layout('layouts.guest')] class extends Component
         }
 
         Session::flash('status', __($status));
-
-        $this->redirectRoute('login', navigate: true);
+        $this->toast($status)->success();
+        $this->redirectRoute('login');
     }
 }; ?>
 
-<div>
-    <form wire:submit="resetPassword">
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+<form class="form w-100" wire:submit="resetPassword">
+    <div class="text-center mb-11">
+        <div class="text-gray-500 fw-semibold fs-6">Reset your Password</div>
+    </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    <div class="fv-row mb-8">
+        <x-input.label>Email Address</x-input.label>
+        <x-input type="email" wire:model="email" placeholder="Email Address" />
+        <x-input.error key="email"  />
+        <x-input.error key="email"  />
+    </div>
+    
+    <div class="fv-row mb-3">
+        <x-input.label>Password</x-input.label>
+        <x-input.password wire:model="password" placeholder="Password" />
+        <x-input.error key="password"  />
+    </div>
+    
+    <div class="fv-row mb-3">
+        <x-input.label>Password</x-input.label>
+        <x-input.password wire:model="password_confirmation" placeholder="Confirm Password" />
+        <x-input.error key="password_confirmation"  />
+    </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
-                          type="password"
-                          name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</div>
+    <div class="d-grid mb-10">
+        <x-button class="btn-primary" wire:loading wire:target="resetPassword" >Reset Password</x-button>
+    </div>
+</form>
