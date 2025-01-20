@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Password;
-use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 use App\Concerns\Livewire\WithToast;
 
-new #[Layout('layouts.guest')] class extends Component {
+new #[Layout('layouts.auth', ['title' => 'Forgot Password'])] class extends Component {
     use WithToast;
 
     public string $email = '';
