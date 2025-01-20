@@ -7,6 +7,8 @@ use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+Route::impersonate();
+
 Route::middleware(['auth'])->group(function(){
     Route::get('', [DashboardController::class, 'index'])->name('dashboard');
 

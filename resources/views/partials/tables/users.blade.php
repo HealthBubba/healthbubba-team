@@ -24,17 +24,37 @@
                     <td><x-currency/>{{number_format($user->commission)}}</td>
                     <td>{{$user->created_at->toDayDateTimeString()}}</td>
                     <td>
-                        <a href="{{route('team.show', ['user' => $user->id])}}" class="btn btn-sm btn-icon btn-light w-30px h-30px">
-                            <i class="text-muted ki-outline ki-eye fs-2"></i>
-                        </a>
+                        <div>
+                            <!--begin::Toggle-->
+                            <button type="button" class="btn btn-primary btn-icon btn-sm rotate" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" data-kt-menu-offset="30px, 30px">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                                  </svg>                                  
+                            </button>
 
-                        <x-button data-bs-target="#user-edit-{{$user->id}}" data-bs-toggle="modal" class="btn-sm btn-icon btn-light w-30px h-30px">
-                            <i class="text-muted ki-outline ki-message-edit fs-2"></i>
-                        </x-button>
-
-                        <x-swal href="{{route('users.destroy', ['user' => $user->id])}}" class="btn btn-sm btn-icon btn-light-danger w-30px h-30px">
-                            <i class="ki-outline ki-trash fs-2"></i>
-                        </x-swal>
+                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-auto min-w-200 mw-300px" data-kt-menu="true">
+                                <div class="menu-item px-3">
+                                    <a href="{{route('team.show', ['user' => $user->id])}}" class="menu-link px-3">
+                                        View
+                                    </a>
+                                </div>
+                                <div class="menu-item px-3">
+                                    <a href="{{route('impersonate', ['id' => $user->id])}}" class="menu-link px-3">
+                                        Impersonate
+                                    </a>
+                                </div>
+                                <div class="menu-item px-3">
+                                    <a href="#" data-bs-target="#user-edit-{{$user->id}}" data-bs-toggle="modal" class="menu-link px-3">
+                                        Edit
+                                    </a>
+                                </div>
+                                <div class="menu-item px-3">
+                                    <x-swal href="{{route('users.destroy', ['user' => $user->id])}}" class="btn btn-sm btn-icon btn-light-danger w-30px h-30px">
+                                        Delete
+                                    </x-swal>
+                                </div>
+                            </div>
+                        </div>
 
                         <livewire:user.edit modal="user-edit-{{$user->id}}" :user="$user" />
                     </td>
