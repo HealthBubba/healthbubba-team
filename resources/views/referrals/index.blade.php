@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            @if ($authenticated->is_marketer)
+            {{-- @if ($authenticated->is_marketer)
                 <div>
                     <div class="card card-bordered">
                         <div class="card-body  p-4">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                 </div>
-            @endif
+            @endif --}}
         </div>
     </div>
 
