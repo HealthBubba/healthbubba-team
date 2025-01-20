@@ -66,7 +66,7 @@ new #[Layout('layouts.auth', ['title' => 'Reset Password'])] class extends Compo
         }
 
         Session::flash('status', __($status));
-        $this->toast($status)->success();
+        $this->toast(__($status))->success();
         $this->redirectRoute('login');
     }
 }; ?>

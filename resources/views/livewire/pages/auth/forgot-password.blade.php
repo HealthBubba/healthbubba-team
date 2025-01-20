@@ -34,7 +34,7 @@ new #[Layout('layouts.auth', ['title' => 'Forgot Password'])] class extends Comp
 
         $this->reset('email');
 
-        $this->toast($status)->success();
+        $this->toast(__($status))->success();
     }
 }; ?>
 
