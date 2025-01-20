@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Password;
 use Livewire\Volt\Component;
 use App\Concerns\Livewire\WithToast;
+use Livewire\Attributes\Layout;
 
 new #[Layout('layouts.auth', ['title' => 'Forgot Password'])] class extends Component {
     use WithToast;
