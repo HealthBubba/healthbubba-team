@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Locked;
 use Livewire\Volt\Component;
+use Livewire\Attributes\Layout;
 use App\Concerns\Livewire\WithToast;
 
 new #[Layout('layouts.auth', ['title' => 'Reset Password'])] class extends Component
