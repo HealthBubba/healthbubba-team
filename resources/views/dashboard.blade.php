@@ -1,4 +1,4 @@
-<x-dashboard-layout title="Overview" heading="Overview">
+<x-dashboard-layout title="Overview" heading="Welcome {{$authenticated->name}}">
     <div class="row row-cols-md-4 g-5 mb-10 row-cols-2">
         <div>
             <div class="card card-bordered">
