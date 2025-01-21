@@ -17,6 +17,7 @@ class DashboardController extends Controller
         $patients = Referral::when($user->is_marketer, fn($query) => $query->whereReferralCode($user->code))->isFromTeam()->whereNotNull('referral_code')->whereType('patient')->count(); 
         
         $referrals_count = Referral::when($user->is_marketer, fn($query) => $query->whereReferralCode($user->code))->isFromTeam()->whereNotNull('referral_code')->latest('created_at')->count();
+        
         $referrals = Referral::when($user->is_marketer, fn($query) => $query->whereReferralCode($user->code))->isFromTeam()->whereNotNull('referral_code')->limit(10)->latest('created_at')->get();
 
         $users = User::isMarketer()->withCount('referrals')->orderBy('referrals_count', 'desc')->limit(10)->get();
