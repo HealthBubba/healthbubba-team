@@ -28,7 +28,7 @@
             <div>
                 <div class="card card-bordered">
                     <div class="card-body  p-4">
-                        <h1 ><x-currency/>{{number_format($marketers)}}</h1>
+                        <h1 >{{number_format($marketers)}}</h1>
                         <p class="text-muted mb-0">Marketers</p>
                     </div>
                 </div>
