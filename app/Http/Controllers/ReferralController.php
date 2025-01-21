@@ -19,8 +19,7 @@ class ReferralController extends Controller
                         ->latest('created_at')->paginate();
 
         $referrals_count = Referral::isFromTeam()->when($user->is_marketer, fn($query) => $query->where('referral_code', $user->code))
-                        ->whereNotNull('referral_code')
-                        ->latest('created_at')->count();
+                        ->whereNotNull('referral_code')->count();
 
         return view('referrals.index', compact('doctors', 'patients', 'referrals', 'referrals_count'));
     }

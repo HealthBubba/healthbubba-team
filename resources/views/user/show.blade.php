@@ -35,7 +35,7 @@
                     <div>
                         <div class="card card-bordered">
                             <div class="card-body p-4">
-                                <h1 >{{$referrals->count()}}</h1>
+                                <h1 >{{$referrals_count}}</h1>
                                 <p class="text-muted mb-0">Total Referrals</p>
                             </div>
                         </div>

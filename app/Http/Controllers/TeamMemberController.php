@@ -19,7 +19,8 @@ class TeamMemberController extends Controller{
         $doctors = $user->referrals()->isFromTeam()->whereType('doctor')->count(); 
         $patients = $user->referrals()->isFromTeam()->whereType('patient')->count(); 
         $referrals = $query->whereNotNull('referral_code')->isFromTeam()->latest('created_at')->paginate();
-        return view('user.show', compact('user', 'referrals', 'patients', 'doctors'));
+        $referrals_count = $query->whereNotNull('referral_code')->isFromTeam()->latest('created_at')->count();
+        return view('user.show', compact('user', 'referrals', 'patients', 'doctors', 'referrals_count'));
     }
 
 }
