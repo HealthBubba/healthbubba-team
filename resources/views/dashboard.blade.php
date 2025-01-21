@@ -24,16 +24,16 @@
                 </div>
             </div>
         </div>
-        {{-- @if ($authenticated->is_marketer)
+        @if ($authenticated->is_admin)
             <div>
                 <div class="card card-bordered">
                     <div class="card-body  p-4">
-                        <h1 ><x-currency/>{{number_format($authenticated->commission)}}</h1>
-                        <p class="text-muted mb-0">Earned Commission</p>
+                        <h1 ><x-currency/>{{number_format($marketers)}}</h1>
+                        <p class="text-muted mb-0">Marketers</p>
                     </div>
                 </div>
             </div>
-        @endif --}}
+        @endif
     </div>
 
     @if ($authenticated->is_admin)
