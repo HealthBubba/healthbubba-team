@@ -1,8 +1,5 @@
 <x-dashboard-layout title="Referrals" heading="Referrals" >
     <div class="mb-10">
-        <livewire:add-referral-modal :user="$authenticated" />
-    </div>
-    <div class="mb-10">
 
         <div class="row row-cols-md-4 g-5 row-cols-2">
             <div>
@@ -43,6 +40,15 @@
     </div>
 
     <div class="card">
+        <div class="card-header">
+            <div class="card-title">Referrals</div>
+            <div class="card-toolbar">
+                @if ($authenticated->is_marketer)
+                    <x-button data-bs-toggle="modal" data-bs-target="#add-referral" class="btn-primary btn-sm btn-outline-primary" >Add Referral</x-button>
+                    <livewire:add-referral-modal :user="$authenticated" />
+                @endif
+            </div>
+        </div>
         <div class="card-body">
             <div>
                 <div class="table-responsive">
@@ -54,5 +60,6 @@
 
             <livewire:user.edit modal="user-edit" />
         </div>
+
     </div>
 </x-dashboard-layout>
