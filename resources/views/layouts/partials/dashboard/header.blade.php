@@ -21,48 +21,7 @@
             </a>
         </div>
 
-        <div class="d-flex align-items-center flex-shrink-0">
-            <div id="kt_header_search" class="header-search d-flex align-items-center w-lg-250px" data-kt-search-keypress="true" data-kt-search-min-length="2" data-kt-search-enter="enter" data-kt-search-layout="menu" data-kt-search-responsive="lg" data-kt-menu-trigger="auto" data-kt-menu-permanent="true" data-kt-menu-placement="bottom-end">
-                <!--begin::Tablet and mobile search toggle-->
-                <div data-kt-search-element="toggle" class="search-toggle-mobile d-flex d-lg-none align-items-center">
-                    <div class="d-flex btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline w-40px h-40px">
-                        <i class="ki-duotone ki-magnifier fs-1">
-                            <span class="path1"></span>
-                            <span class="path2"></span>
-                        </i>
-                    </div>
-                </div>
-                <!--end::Tablet and mobile search toggle-->
-                <!--begin::Form(use d-none d-lg-flex classes for responsive search)-->
-                <form data-kt-search-element="form" class="d-none align-items-center d-lg-flex w-100 mb-5 mb-lg-0 position-relative" autocomplete="off">
-                    <!--begin::Hidden input(Added to disable form autocomplete)-->
-                    <input type="hidden" />
-                    <!--end::Hidden input-->
-                    <!--begin::Icon-->
-                    <i class="ki-duotone ki-magnifier fs-2 text-gray-700 position-absolute top-50 translate-middle-y ms-4">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
-                    <!--end::Icon-->
-                    <!--begin::Input-->
-                    <input type="text" class="form-control bg-transparent ps-13 fs-7 h-40px" name="search" value="" placeholder="Quick Search" data-kt-search-element="input" />
-                    <!--end::Input-->
-                    <!--begin::Spinner-->
-                    <span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5" data-kt-search-element="spinner">
-                        <span class="spinner-border h-15px w-15px align-middle text-gray-500"></span>
-                    </span>
-                    <!--end::Spinner-->
-                    <!--begin::Reset-->
-                    <span class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-4" data-kt-search-element="clear">
-                        <i class="ki-duotone ki-cross fs-2 fs-lg-1 me-0">
-                            <span class="path1"></span>
-                            <span class="path2"></span>
-                        </i>
-                    </span>
-                    <!--end::Reset-->
-                </form>
-            </div>
-            
+        <div class="d-flex align-items-center flex-shrink-0">            
             <div class="d-flex align-items-center ms-3 ms-lg-4">
                 <!--begin::Menu toggle-->
                 <a href="#" class="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline w-40px h-40px" data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
