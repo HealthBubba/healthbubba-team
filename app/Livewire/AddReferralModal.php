@@ -21,7 +21,7 @@ class AddReferralModal extends Component {
 
     function add(){
         $this->resetErrorBag();
-        if(!$referral = Referral::where('email', $this->email)->first()) {
+        if(!$referral = Referral::where('email', trim($this->email))->first()) {
             return $this->addError('email', "No user found with email {$this->email}");
         }
 
