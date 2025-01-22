@@ -60,6 +60,11 @@
                     </td>
                 </tr>
             @empty
+                <tr>
+                    <td colspan="8" class="text-center" >
+                        <p class="text-muted">No Users found</p>
+                    </td>
+                </tr>
             @endforelse
         </tbody>
     </x-table>

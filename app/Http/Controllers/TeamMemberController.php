@@ -10,6 +10,12 @@ class TeamMemberController extends Controller{
     function index(Request $request) {
         $users = User::isMarketer()
                     ->withCount('referrals')
+                    ->when($request->keyword, function($query, $keyword){
+                        $query->where('firstname', 'LIKE', "%{$keyword}%")
+                            ->orWhere('firstname', 'LIKE', "%{$keyword}%")
+                            ->orWhere('email', 'LIKE', "%{$keyword}%")
+                            ->orWhere('code', 'LIKE', "%{$keyword}%");
+                    })
                     ->orderByDesc('referrals_count')->paginate();
         return view('user.index', compact('users'));
     }
