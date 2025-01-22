@@ -17,16 +17,18 @@
                     </div>
                 </div>
 
-                <div>
+                <div  >
+                    <x-button data-bs-toggle="modal" data-bs-target="#add-referral" class="btn-primary btn-sm btn-outline-primary" >Add Referral</x-button>
                     <x-button data-bs-target="#user-edit-{{$user->id}}" data-bs-toggle="modal" class="btn-sm btn-light-primary">
                         Edit Profile
                     </x-button>
-
+                    
                     <x-swal href="{{route('users.destroy', ['user' => $user->id])}}" class="btn btn-sm btn-light-danger">
                         Delete Account
                     </x-swal>
                 </div>
 
+                <livewire:add-referral-modal :user="$user" />
                 <livewire:user.edit modal="user-edit-{{$user->id}}" :user="$user" />
             </div>
 

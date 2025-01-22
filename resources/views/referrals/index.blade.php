@@ -1,5 +1,9 @@
 <x-dashboard-layout title="Referrals" heading="Referrals" >
     <div class="mb-10">
+        <livewire:add-referral-modal :user="$authenticated" />
+    </div>
+    <div class="mb-10">
+
         <div class="row row-cols-md-4 g-5 row-cols-2">
             <div>
                 <div class="card card-bordered">
