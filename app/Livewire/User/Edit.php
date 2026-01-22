@@ -21,8 +21,6 @@ class Edit extends Component {
     public User | null $user = null;
 
     function mount(){
-        $this->generate();
-
         if($this->user) {
             $this->fill($this->user);
         }

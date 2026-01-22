@@ -17,4 +17,6 @@ class Referral extends Model
     function user(){
         return $this->belongsTo(User::class, 'referral_code', 'code');
     }
+
+    
 }

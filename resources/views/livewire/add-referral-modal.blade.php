@@ -1,4 +1,4 @@
-<x-modal id="add-referral" data-dismiss >
+<x-modal id="add-referral" >
     <form wire:submit="add">
         <div class="mb-5">
             <h5>Add your referred user's email address</h5>
@@ -11,7 +11,8 @@
         </div>
 
         <div class="col-md-12">
-            <x-button wire:loading wire:target="add" class="btn-primary w-100" >Add Referral</x-button>
+            <x-button wire:loading wire:target="add" class="btn-primary mb-2 w-100" >Add Referral</x-button>
+            <x-button data-dismiss="modal" class="btn-primary w-100" >Close</x-button>
         </div>
     </form>
 </x-modal>    

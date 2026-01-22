@@ -28,9 +28,9 @@
             <div class="col-md-12" >
                 <div class="d-flex align-items-center justify-content-between">
                     <x-input.label>Referral Code</x-input.label>
-                    <x-button class="btn-link fw-medium btn-sm py-0" type="button" wire:click="generate" wire:loading wire:target="generate" color="primary" >{{$user ? 'Refresh Code' : 'Generate Code'}}</x-button>
+                    {{-- <x-button class="btn-link fw-medium btn-sm py-0" type="button" wire:click="generate" wire:loading wire:target="generate" color="primary" >{{$user ? 'Refresh Code' : 'Generate Code'}}</x-button> --}}
                 </div>
-                <x-input wire:model="code" :disabled="true" placeholder="Referral Code" style="user-select: all;" />
+                <x-input wire:model="code" placeholder="Referral Code" style="user-select: all;" />
                 <x-input.error key="code" />
             </div>
 
