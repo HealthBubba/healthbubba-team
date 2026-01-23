@@ -22,15 +22,15 @@ class Edit extends Component {
 
     function rules(){
         return [
-            'email' => ['required', 'string', 'email']
+            'email' => ['required', 'string']
         ];
     }
 
     function search(){
         $this->validate();
         
-        if(!$this->user = Referral::whereEmail($this->email)->first()) {
-            return $this->addError('email', "User with email {$this->email} does not exist");
+        if(!$this->user = Referral::whereEmail($this->email)->orWhere('referral_code', $this->email)->first()) {
+            return $this->addError('email', "User with email or referral code {$this->email} does not exist");
         }
     }
 

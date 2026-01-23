@@ -1,8 +1,8 @@
 <x-modal id="{{$modal}}" data-dismiss >
-    <h5>Search User by Email Address</h5>
+    <h5>Search User by Email Address or Referral Code</h5>
     <form wire:submit="search" >
         <div class="d-flex gap-3 mb-2">
-            <x-input type="email" wire:model.="email" class="flex-fill" placeholder="Email Address" />
+            <x-input type="email" wire:model="email" class="flex-fill" placeholder="Email Address or Referral Code" />
             <x-button wire:loading wire:target="search" class="btn-primary flex-shrink-0" >Search User</x-button>
         </div>
         <x-input.error class="fs-6" key="email" />
