@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Marketer;
 use App\Models\Referral;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -34,6 +35,14 @@ class TeamMemberController extends Controller{
         $referrals = Referral::from($query)->whereNotNull('referral_code')->latest('created_at')->paginate();
         $referrals_count = Referral::from($query)->whereNotNull('referral_code')->latest('created_at')->count();
         return view('user.show', compact('user', 'referrals', 'patients', 'doctors', 'referrals_count'));
+    }
+
+    function remove(Request $request, Referral $user) {
+        // $query = $user->referrals();
+        $user->marketer?->delete();
+        toast('User removed as a marketer', 'Success')->success();
+
+        return back();
     }
 
 }

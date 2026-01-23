@@ -17,6 +17,7 @@ Route::middleware(['auth:web,marketer'])->group(function(){
             Route::get('', [TeamMemberController::class, 'index'])->name('team');
             Route::prefix('{user}')->group(function(){
                 Route::get('', [TeamMemberController::class, 'show'])->name('team.show');
+                Route::get('remove', [TeamMemberController::class, 'remove'])->name('team.remove');
             });
         });
 

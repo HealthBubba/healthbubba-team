@@ -33,19 +33,19 @@ class Edit extends Component {
             return $this->addError('email', "User with email or referral code {$this->email} does not exist");
         }
 
-        $this->reload();
-    }
-
+        }
+        
     function save(){
         if($marketer = Marketer::where('user_id', $this->user->id)->first()) {
             return $this->addError('email', 'The user is already a marketer');
         }
-
+                
         Marketer::create([
-            'user_id' => $this->user->id
+           'user_id' => $this->user->id
         ]);
-
+        
         $this->toast('Marketer Added Successfully', 'Success')->success();
+        $this->reload();
     }
 
     public function render(){
