@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Role;
+use App\Enums\Settings;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,6 +43,10 @@ class Referral extends Authenticatable {
         
     function patientReferrer(){
         return $this->hasOne(PatientReferral::class, 'referred_id', 'id');
+    }
+
+    function getCommissionAttribute(){
+        return Settings::COMMISSION_FEE->value() * $this->patientReferrals->count();
     }
 
     function referrer(){
