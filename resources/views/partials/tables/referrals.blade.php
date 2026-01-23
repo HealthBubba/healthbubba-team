@@ -5,6 +5,7 @@
                 <th class="min-w-200px">Name</th>
                 @if ($authenticated->is_admin)                            
                     <th>Referred By</th>
+                    <th class="min-w-150px" >Referrer Code</th>
                 @endif
                 <th class="min-w-100px">Verification</th>
                 <th>Type</th>
@@ -24,10 +25,15 @@
                     @if ($authenticated->is_admin)
                         <td>
     
-                            <a href="{{route('team.show', ['user' => $referral->referral_code])}}">
-                                {{$referral->referrer->email}} - {{ $referral->referral_code }}
+                            <a class="d-block" href="{{route('team.show', ['user' => $referral->referral_code])}}">
+                                {{$referral->referrer->email}} 
                             </a>
+
                             {{$referral->referrer->first_name}} {{$referral->referrer->last_name}}
+                        </td>
+
+                        <td>
+                            {{ $referral->referral_code }} 
                         </td>
                     @endif
                     <td class="fs-6">
