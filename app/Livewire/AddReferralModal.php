@@ -17,7 +17,7 @@ class AddReferralModal extends Component {
     #[Validate('required|email')]
     public $email = '';
 
-    public User $user;
+    public Referral $user;
 
     function add(){
         $this->resetErrorBag();

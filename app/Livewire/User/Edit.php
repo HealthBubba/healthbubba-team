@@ -4,10 +4,10 @@ namespace App\Livewire\User;
 
 use App\Concerns\Livewire\WithReload;
 use App\Concerns\Livewire\WithToast;
-use App\Enums\Role;
 use App\Library\Token;
+use App\Models\Marketer;
+use App\Models\Referral;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -16,40 +16,34 @@ class Edit extends Component {
 
     public $modal;
 
-    public $code, $firstname, $lastname, $email, $phone, $password;
+    public $email;
 
-    public User | null $user = null;
-
-    function mount(){
-        if($this->user) {
-            $this->fill($this->user);
-        }
-    }
+    public $user = null;
 
     function rules(){
         return [
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
-            'email' => ['required', 'string', 'email', Rule::unique('users', 'email')->ignore($this->user?->id, 'id')],
-            'phone' => 'nullable|string',
-            'code' => ['required', Rule::unique('users', 'code')->ignore($this->user?->id, 'id')],
-            'password' => 'nullable'
+            'email' => ['required', 'string', 'email']
         ];
     }
 
-    function generate(){
-        $this->code = strtoupper(Token::alphaNum(8, User::class, 'code'));
+    function search(){
+        $this->validate();
+        
+        if(!$this->user = Referral::whereEmail($this->email)->first()) {
+            return $this->addError('email', "User with email {$this->email} does not exist");
+        }
     }
-    
+
     function save(){
-        $validated = $this->validate();
-        $validated['password'] = $this->user ? $this->user->password : Hash::make($this->password) ?? Hash::make(Token::text(8));
-        $validated['role'] = Role::MARKETER;
+        if($marketer = Marketer::where('user_id', $this->user->id)->first()) {
+            return $this->addError('email', 'The user is already a marketer');
+        }
 
-        $this->user?->update($validated) ?? User::create($validated);
+        Marketer::create([
+            'user_id' => $this->user->id
+        ]);
 
-        $this->toast('User Information Saved', 'Success')->success();
-        return $this->reload();
+        $this->toast('Marketer Added Successfully', 'Success')->success();
     }
 
     public function render(){

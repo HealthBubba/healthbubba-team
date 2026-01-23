@@ -1,6 +1,7 @@
 <?php
 
 use App\Library\Toast;
+use App\Models\Referral;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,8 +13,12 @@ if(!function_exists('status')) {
 }
 
 if(!function_exists('authenticated')){
-    function authenticated($relations = [], $guard = 'web') : User | null {
-        return User::find(Auth::guard($guard)->id());
+    function authenticated($relations = [], $guard = 'web') : User | Referral | null {
+        if($user = User::whereEmail(Auth::guard($guard)->user()?->email)->first()) { 
+            return $user;
+        }
+
+        return Referral::find(Auth::guard('marketer')->id());
     }
 }
 

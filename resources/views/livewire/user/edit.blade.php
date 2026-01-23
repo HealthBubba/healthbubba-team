@@ -1,49 +1,37 @@
 <x-modal id="{{$modal}}" data-dismiss >
-    <form wire:submit="save">
-        <div class="row g-5">
-            <div class="col-md-6" >
-                <x-input.label>First Name</x-input.label>
-                <x-input wire:model="firstname" placeholder="First Name" />
-                <x-input.error key="firstname" />
+    <h5>Search User by Email Address</h5>
+    <form wire:submit="search" >
+        <div class="d-flex gap-3 mb-2">
+            <x-input type="email" wire:model.="email" class="flex-fill" placeholder="Email Address" />
+            <x-button wire:loading wire:target="search" class="btn-primary flex-shrink-0" >Search User</x-button>
+        </div>
+        <x-input.error class="fs-6" key="email" />
+    </form>
+
+    @if ($user)
+        <div>
+            <div class="d-flex align-items-center gap-1 mb-2">
+                <i class="ki-outline ki-check fs-2 text-primary" ></i> 
+                <h6 class="mb-0 fw-medium">User Found</h6>
             </div>
 
-            <div class="col-md-6" >
-                <x-input.label>Last Name</x-input.label>
-                <x-input wire:model="lastname" placeholder="Last Name" />
-                <x-input.error key="lastname" />
-            </div>
-
-            <div class="col-md-12" >
-                <x-input.label>Email Address</x-input.label>
-                <x-input type="email" wire:model="email" placeholder="Email Address" />
-                <x-input.error key="email" />
-            </div>
-
-            <div class="col-md-12" >
-                <x-input.label>Phone Number</x-input.label>
-                <x-input wire:model="phone" placeholder="Phone Number" />
-                <x-input.error key="phone" />
-            </div>
-
-            <div class="col-md-12" >
-                <div class="d-flex align-items-center justify-content-between">
-                    <x-input.label>Referral Code</x-input.label>
-                    {{-- <x-button class="btn-link fw-medium btn-sm py-0" type="button" wire:click="generate" wire:loading wire:target="generate" color="primary" >{{$user ? 'Refresh Code' : 'Generate Code'}}</x-button> --}}
+            <div class="bg-light p-3 rounded-3 mb-4" >
+                <p class="fw-semibold fs-6 mb-0">{{ $user->first_name }} {{ $user->last_name }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="text-muted fs-6 mb-0" >{{ $user->email }}</p>
+                    <p class="text-muted fs-6 mb-0">{{ $user->referral_code }}</p>
                 </div>
-                <x-input wire:model="code" placeholder="Referral Code" style="user-select: all;" />
-                <x-input.error key="code" />
             </div>
 
-
-            <div class="col-md-12">
-                <x-input.label>Password</x-input.label>
-                <x-input.password wire:model="password" placeholder="Password" />
-                <x-input.error key="password" />
-            </div>
-
-            <div class="col-md-12">
-                <x-button wire:loading wire:target="save" class="btn-primary w-100" >Save</x-button>
+            <div>
+                <x-button class="btn-primary w-100" wire:click="save" wire:loading wire:target="save" >Add User</x-button>
             </div>
         </div>
-    </form>
+        @elseif (!$user && $email)
+        <div class="d-flex align-items-center gap-1 mb-2">
+            <i class="ki-outline ki-cross fs-2 text-danger" ></i> 
+            <h6 class="mb-0 fw-medium">User Not Found</h6>
+        </div>
+    @endif
+    <x-button class="btn-light w-100 m-4" data-bs-dismiss="modal" >Cancel</x-button>
 </x-modal>

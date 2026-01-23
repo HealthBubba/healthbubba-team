@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Referral;
+use App\Services\ApiService;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -30,15 +33,33 @@ class LoginForm extends Form
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only(['email', 'password']), $this->remember)) {
-            RateLimiter::hit($this->throttleKey());
-
-            throw ValidationException::withMessages([
-                'form.email' => trans('auth.failed'),
-            ]);
+        if (Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+            RateLimiter::clear($this->throttleKey());
+            return;
         }
 
-        RateLimiter::clear($this->throttleKey());
+        // $apiService = new ApiService; 
+        
+        if($user = Referral::whereEmail($this->email)->first()) {
+            if (password_verify($this->password, $user->password)) {
+                Auth::guard('marketer')->login($user);
+                RateLimiter::clear($this->throttleKey());
+                return;
+            }
+
+            // [$status, $message, $data] = $apiService->login($this->only(['email', 'password']));            
+            // if(!$status) toast($message)->error();
+
+
+            // if (Auth::guard('marketer')->attempt($this->only(['email', 'password']), $this->remember)) {
+            // }
+        }
+
+        RateLimiter::hit($this->throttleKey());
+
+        throw ValidationException::withMessages([
+            'form.email' => trans('auth.failed'),
+        ]);
     }
 
     /**

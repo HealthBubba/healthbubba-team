@@ -51,12 +51,6 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">Latest Referrals</div>
-            @if ($authenticated->is_marketer)
-                <div class="card-toolbar">
-                    <x-button data-bs-toggle="modal" data-bs-target="#add-referral" class="btn-primary btn-sm btn-outline-primary" >Add Referral</x-button>
-                </div>
-                <livewire:add-referral-modal :user="$authenticated" />
-            @endif
         </div>
         <div class="card-body">
             <div class="table-responsive">

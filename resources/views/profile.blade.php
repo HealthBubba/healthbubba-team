@@ -6,11 +6,14 @@
                     <livewire:profile.update-profile-information-form />
                 </div>
 
-                <div class="separator separator-dashed my-10"></div>
-    
-                <div >
-                    <livewire:profile.update-password-form />
-                </div>
+                @if (!$authenticated->is_marketer)
+
+                    <div class="separator separator-dashed my-10"></div>
+        
+                    <div >
+                        <livewire:profile.update-password-form />
+                    </div>
+                @endif
             </div>
         </div>
     </div>

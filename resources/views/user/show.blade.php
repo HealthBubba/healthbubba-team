@@ -4,31 +4,31 @@
             <div class="mb-10 d-md-flex justify-content-between">
                 <div>
                     <div>
-                        <h3 class="mb-0">{{$user->name}}</h3>
+                        <h3 class="mb-0">{{$user->first_name}} {{ $user->last_name }} </h3>
                         <p class="text-muted">{{$user->email}}</p>
                     </div>
                     <div class="d-flex align-items-center gap-2">
                         <div>
-                            <h4 class="mb-0">{{$user->code}}</h4>
+                            <h4 class="mb-0">{{$user->referral_code}}</h4>
                         </div>
                         <div>
-                            <x-copy value="{{$user->code}}" />
+                            <x-copy value="{{$user->referral_code}}" />
                         </div>
                     </div>
                 </div>
 
                 <div  >
-                    <x-button data-bs-toggle="modal" data-bs-target="#add-referral" class="btn-primary btn-sm btn-outline-primary" >Add Referral</x-button>
-                    <x-button data-bs-target="#user-edit-{{$user->id}}" data-bs-toggle="modal" class="btn-sm btn-light-primary">
+                    {{-- <x-button data-bs-toggle="modal" data-bs-target="#add-referral" class="btn-primary btn-sm btn-outline-primary" >Add Referral</x-button> --}}
+                    {{-- <x-button data-bs-target="#user-edit-{{$user->id}}" data-bs-toggle="modal" class="btn-sm btn-light-primary">
                         Edit Profile
-                    </x-button>
+                    </x-button> --}}
                     
-                    <x-swal href="{{route('users.destroy', ['user' => $user->id])}}" class="btn btn-sm btn-light-danger">
+                    {{-- <x-swal href="{{route('users.destroy', ['user' => $user->id])}}" class="btn btn-sm btn-light-danger">
                         Delete Account
-                    </x-swal>
+                    </x-swal> --}}
                 </div>
 
-                <livewire:add-referral-modal :user="$user" />
+                {{-- <livewire:add-referral-modal :user="$user" /> --}}
                 <livewire:user.edit modal="user-edit-{{$user->id}}" :user="$user" />
             </div>
 

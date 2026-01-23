@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::impersonate();
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth:web,marketer'])->group(function(){
     Route::get('', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::middleware('can:admin')->group(function(){
@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function(){
 
         Route::prefix('users')->group(function(){
             Route::get('', [UserController::class, 'index'])->name('users');
+
             Route::prefix('{user}')->group(function(){
                 Route::get('delete', [UserController::class, 'destroy'])->name('users.destroy');
             });

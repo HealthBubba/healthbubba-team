@@ -5,13 +5,13 @@
             <a href="{{route('dashboard')}}" target="_blank" class="text-gray-800 text-hover-primary">{{env('APP_NAME')}}</a>
         </div>
 
-        <ul class="order-1 menu menu-gray-600 menu-hover-primary fw-semibold">
+        {{-- <ul class="order-1 menu menu-gray-600 menu-hover-primary fw-semibold">
             <li class="menu-item">
                 <a href="#" target="_blank" class="px-2 menu-link">About</a>
             </li>
             <li class="menu-item">
                 <a href="#" target="_blank" class="px-2 menu-link">Support</a>
             </li>
-        </ul>
+        </ul> --}}
     </div>
 </div>

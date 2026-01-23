@@ -35,9 +35,9 @@ class User extends Authenticatable {
         return $query->whereIn('role', [Role::ADMIN, Role::SUPERADMIN]);
     }
 
-    function scopeIsMarketer($query) {
-        return $query->whereRole(Role::MARKETER);
-    }
+    // function scopeIsMarketer($query) {
+    //     return $query->whereRole(Role::MARKETER);
+    // }
 
     function referrals(){
         return $this->setConnection('main')->hasMany(Referral::class, 'referral_code', 'code');
@@ -55,16 +55,16 @@ class User extends Authenticatable {
         return in_array($this->role, [Role::ADMIN, Role::SUPERADMIN]);
     }
 
-    function getIsMarketerAttribute(){
-        return $this->role == Role::MARKETER;
-    }
+    // function getIsMarketerAttribute(){
+    //     return $this->role == Role::MARKETER;
+    // }
 
     public function canImpersonate(): bool {
         return $this->is_admin;
     }
     
-    public function canBeImpersonated(): bool {
-        return $this->is_marketer;
-    }
+    // public function canBeImpersonated(): bool {
+    //     return $this->is_marketer;
+    // }
 
 }

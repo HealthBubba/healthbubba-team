@@ -10,19 +10,21 @@ class DashboardController extends Controller
 {
     function index(){
         $query = Referral::query();
-        $user = authenticated();
+        $user = authenticated([]);
 
-        $doctors = Referral::when($user->is_marketer, fn($query) => $query->whereReferralCode($user->code))->isFromTeam()->whereNotNull('referral_code')->whereType('doctor')->count(); 
-        
-        $patients = Referral::when($user->is_marketer, fn($query) => $query->whereReferralCode($user->code))->isFromTeam()->whereNotNull('referral_code')->whereType('patient')->count(); 
-        
-        $referrals_count = Referral::when($user->is_marketer, fn($query) => $query->whereReferralCode($user->code))->isFromTeam()->whereNotNull('referral_code')->latest('created_at')->count();
-        
-        $referrals = Referral::when($user->is_marketer, fn($query) => $query->whereReferralCode($user->code))->isFromTeam()->whereNotNull('referral_code')->limit(10)->latest('created_at')->get();
+        $query = Referral::whereRelation('referral', 'referrer_id', $user->id)->with('referral');
 
-        $users = User::isMarketer()->withCount('referrals')->orderBy('referrals_count', 'desc')->limit(10)->get();
+        $doctors = Referral::from($query)->whereType('doctor')->count(); 
         
-        $marketers = User::isMarketer()->count();
+        $patients = Referral::from($query)->whereType('patient')->count(); 
+        
+        $referrals_count = Referral::from($query)->latest('created_at')->count();
+        
+        $referrals = Referral::from($query)->limit(10)->latest('created_at')->get();
+
+        $users = Referral::isMarketer()->withCount('referrals')->orderBy('referrals_count', 'desc')->limit(10)->get();
+        
+        $marketers = Referral::isMarketer()->count();
 
         return view('dashboard', compact('doctors', 'patients', 'users', 'marketers', 'referrals_count', 'referrals'));
 
