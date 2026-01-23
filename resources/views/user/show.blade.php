@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div>
-                <x-table >
+                {{-- <x-table >
                     <thead class="border-gray-200 fs-5 fw-semibold bg-lighten">
                         <tr>
                             <th>Name</th>
@@ -93,9 +93,16 @@
                         @empty
                         @endforelse
                     </tbody>
-                </x-table>
+                </x-table> --}}
 
-                {{$referrals->links()}}
+                {{-- {{$referrals->links()}} --}}
+                <div>
+                    <div class="table-responsive">
+                        @include('partials.tables.referrals')
+                    </div>
+
+                    {{$referrals->links()}}
+                </div>
             </div>
 
             <livewire:user.edit modal="user-edit" />

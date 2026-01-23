@@ -12,7 +12,9 @@ class DashboardController extends Controller
         $query = Referral::query();
         $user = authenticated([]);
 
-        $query = Referral::whereRelation('referral', 'referrer_id', $user->id)->with('referral');
+        $query = Referral::when($user->is_marketer, fn($query) => $query->whereRelation('referral', 'referrer_id', $user->id))
+                    ->has('referral')
+                    ->with('referral');
 
         $doctors = Referral::from($query)->whereType('doctor')->count(); 
         
