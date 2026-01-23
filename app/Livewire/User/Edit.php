@@ -32,6 +32,8 @@ class Edit extends Component {
         if(!$this->user = Referral::whereEmail($this->email)->orWhere('referral_code', $this->email)->first()) {
             return $this->addError('email', "User with email or referral code {$this->email} does not exist");
         }
+
+        $this->reload();
     }
 
     function save(){
