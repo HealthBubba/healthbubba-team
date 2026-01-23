@@ -25,7 +25,7 @@
                         <td>
     
                             <a href="{{route('team.show', ['user' => $referral->referral_code])}}">
-                                {{$referral->referrer->email}}
+                                {{$referral->referrer->email}} - {{ $referral->referral_code }}
                             </a>
                             {{$referral->referrer->first_name}} {{$referral->referrer->last_name}}
                         </td>
