@@ -58,14 +58,14 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    {{-- <div>
                         <div class="card card-bordered">
                             <div class="card-body  p-4">
                                 <h1 ><x-currency/>{{number_format($user->commission)}}</h1>
                                 <p class="text-muted mb-0">Earned Commission</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div>

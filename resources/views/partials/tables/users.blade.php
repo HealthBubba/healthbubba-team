@@ -6,7 +6,7 @@
                 <th>Email Address</th>
                 <th>Referral Code</th>
                 <th>Referrals</th>
-                <th>Total Commission</th>
+                {{-- <th>Total Commission</th> --}}
                 <th>Joined At</th>
                 <th class=""></th>
             </tr>
@@ -21,7 +21,7 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->referral_code}} <x-copy :value="$user->referral_code" /> </td>
                     <td>{{$user->referrals_count}}</td>
-                    <td><x-currency/>{{number_format($user->commission)}}</td>
+                    {{-- <td><x-currency/>{{number_format($user->commission)}}</td> --}}
                     <td>{{$user->marketer->created_at->toDayDateTimeString()}}</td>
                     <td>
                         <div class="d-flex gap-2">
