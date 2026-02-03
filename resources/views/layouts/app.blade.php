@@ -16,6 +16,8 @@
 		<link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 
+		@livewireStyles
+		
 		@stack('styles')
 		<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 	</head>
@@ -73,6 +75,8 @@
 		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
 		<script src="/assets/plugins/global/plugins.bundle.js"></script>
 		<script src="/assets/js/scripts.bundle.js"></script>
+		
+		@livewireScripts
 
 		@stack('scripts')
 		<x-toast />
